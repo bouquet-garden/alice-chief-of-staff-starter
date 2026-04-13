@@ -101,7 +101,7 @@ Then read:
 
 ### Option B — bootstrap an OpenClaw workspace directly
 ```bash
-curl -fsSL https://raw.githubusercontent.com/bouquet-garden/alice-chief-of-staff-starter/main/scripts/bootstrap-openclaw-workspace.sh | bash -s -- /path/to/openclaw/workspace
+curl -fsSL https://raw.githubusercontent.com/bouquet-garden/alice-chief-of-staff-starter/master/scripts/bootstrap-openclaw-workspace.sh | bash -s -- /path/to/openclaw/workspace
 ```
 
 This will:
