@@ -2,11 +2,13 @@
 
 If you are an agent installing or operating Alice, read in this order:
 
-1. [`prompts/alice-bootstrap-prompt-v1.txt`](prompts/alice-bootstrap-prompt-v1.txt)
-2. [`docs/alice-onboarding-wizard-spec-v1.md`](docs/alice-onboarding-wizard-spec-v1.md)
-3. [`docs/source-of-truths.md`](docs/source-of-truths.md)
-4. [`docs/alice-patterns-worth-stealing.md`](docs/alice-patterns-worth-stealing.md)
-5. [`docs/design-principles.md`](docs/design-principles.md)
+1. [`docs/prerequisites.md`](docs/prerequisites.md)
+2. [`docs/first-hour-walkthrough.md`](docs/first-hour-walkthrough.md)
+3. [`prompts/alice-bootstrap-prompt-v1.txt`](prompts/alice-bootstrap-prompt-v1.txt)
+4. [`docs/alice-onboarding-wizard-spec-v1.md`](docs/alice-onboarding-wizard-spec-v1.md)
+5. [`docs/source-of-truths.md`](docs/source-of-truths.md)
+6. [`docs/alice-patterns-worth-stealing.md`](docs/alice-patterns-worth-stealing.md)
+7. [`docs/design-principles.md`](docs/design-principles.md)
 
 ## Your job
 
@@ -48,10 +50,13 @@ Populate:
 - `SOURCES_OF_TRUTH.md`
 - `GOALS.md`
 - `CONTEXT.md`
+- `TOOLS.md`
+- `EXPERIMENTS.md`
 - `memory/YYYY-MM-DD.md`
 
 ### 5. Choose one first magic moment
 Use the rubric in `examples/first-magic-moment-options.md`.
+If unsure, choose the email ownership brief and use `examples/sample-magic-moment-email-brief.md` as the quality bar.
 
 ### 6. Optionally install supporting layers
 - `scripts/install-gbrain.sh`

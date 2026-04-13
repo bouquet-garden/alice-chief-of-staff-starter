@@ -86,7 +86,21 @@ The gap between “I use AI” and “AI runs meaningful parts of my life/work�
 
 ---
 
+## Before you start
+
+Read [`docs/prerequisites.md`](docs/prerequisites.md).
+
+The short version:
+- minimum: OpenClaw + one working chat surface + git + curl
+- optional: GBrain needs `bun`
+- optional: Gstack assumes a Claude-oriented coding setup
+
 ## Fast start
+
+### Decision tree
+- **I want the fastest path to value** → follow [`docs/first-hour-walkthrough.md`](docs/first-hour-walkthrough.md)
+- **I want to install into a real OpenClaw workspace now** → use the bootstrap script
+- **I want to understand the philosophy first** → read the bootstrap prompt + wizard spec
 
 ### Option A — clone and read
 ```bash
@@ -96,8 +110,9 @@ cd alice-chief-of-staff-starter
 
 Then read:
 1. `START_HERE_FOR_AGENTS.md`
-2. `prompts/alice-bootstrap-prompt-v1.txt`
-3. `docs/alice-onboarding-wizard-spec-v1.md`
+2. `docs/first-hour-walkthrough.md`
+3. `prompts/alice-bootstrap-prompt-v1.txt`
+4. `docs/alice-onboarding-wizard-spec-v1.md`
 
 ### Option B — bootstrap an OpenClaw workspace directly
 ```bash
@@ -107,7 +122,21 @@ curl -fsSL https://raw.githubusercontent.com/bouquet-garden/alice-chief-of-staff
 This will:
 - copy workspace templates
 - install the bootstrap prompt into the target workspace
+- create a daily memory file
 - give the agent the minimum structure needed to start discovery and produce a first magic moment
+
+### What a good first hour looks like
+By the end of the first hour, you should have:
+- a source-of-truth map
+- top goals and projects written down
+- a localized `USER.md`
+- a current-state `CONTEXT.md`
+- one real magic-moment output
+
+See:
+- [`docs/first-hour-walkthrough.md`](docs/first-hour-walkthrough.md)
+- [`examples/sample-magic-moment-email-brief.md`](examples/sample-magic-moment-email-brief.md)
+- [`examples/sample-workspace/`](examples/sample-workspace/)
 
 ---
 
@@ -140,6 +169,8 @@ docs/
   alice-patterns-worth-stealing.md
   design-principles.md
   source-of-truths.md
+  prerequisites.md
+  first-hour-walkthrough.md
   strategic-lenses.md
   world-state-and-accountability.md
   review-scorecard.md
@@ -153,11 +184,13 @@ templates/workspace/
   USER.md
   CONTEXT.md
   MEMORY.md
+  TOOLS.md
   SOURCES_OF_TRUTH.md
   GOALS.md
   METRICS.md
   ROADMAP.md
   WORKFLOWS.md
+  EXPERIMENTS.md
   memory/README.md
 
 scripts/
@@ -169,6 +202,8 @@ scripts/
 examples/
   founder-discovery.md
   first-magic-moment-options.md
+  sample-magic-moment-email-brief.md
+  sample-workspace/
 ```
 
 ---

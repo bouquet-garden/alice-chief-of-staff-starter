@@ -11,5 +11,10 @@
 ## Blockers
 - 
 
+## Signals to Watch
+- stale external threads
+- blocker age
+- decision bottlenecks
+
 ## Next Action
 - 

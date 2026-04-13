@@ -8,10 +8,6 @@
 - GBrain = world knowledge
 - Memory = Alice operational memory
 
-## Reconciliation Rules
-- Slack can imply state changes, but does not override task truth by itself
-- email commitments should update task/project state when material
-- meeting decisions should be written down, not left in transcript-only form
-
 ## Local Overrides
-- 
+- meeting transcripts from Granola feed both GBrain and daily memory
+- Slack is never final truth for task state; it only triggers reconciliation
