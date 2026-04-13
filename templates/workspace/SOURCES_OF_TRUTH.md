@@ -3,6 +3,7 @@
 ## Default Map
 - Notion = execution truth
 - Email = external commitment truth
+- Calendar = planned time / meeting truth
 - Obsidian = strategic / intellectual truth
 - Slack = team-state signal
 - GBrain = world knowledge

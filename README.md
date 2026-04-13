@@ -165,6 +165,7 @@ prompts/
   alice-bootstrap-prompt-v1.txt
 
 docs/
+  alice-bootstrap-prompt-v1.md
   alice-onboarding-wizard-spec-v1.md
   alice-patterns-worth-stealing.md
   design-principles.md
@@ -173,6 +174,7 @@ docs/
   first-hour-walkthrough.md
   strategic-lenses.md
   world-state-and-accountability.md
+  why-this-exists.md
   review-scorecard.md
 
 templates/workspace/
@@ -222,7 +224,9 @@ This repo comes out of a few months of using OpenClaw for real operational work:
 It is not trying to win Twitter for 48 hours.
 It is trying to capture durable patterns from real use.
 
-See: [`docs/design-principles.md`](docs/design-principles.md)
+See:
+- [`docs/design-principles.md`](docs/design-principles.md)
+- [`docs/why-this-exists.md`](docs/why-this-exists.md)
 
 ---
 

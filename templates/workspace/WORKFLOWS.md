@@ -1,6 +1,12 @@
 # WORKFLOWS.md
 
+## Selected First Magic Moment
+- 
+
 ## Installed Workflows
+- 
+
+## Candidate Workflows
 
 ### Email ownership / stale-thread tracking
 - classify ball with us / ball with them
@@ -18,7 +24,7 @@
 - what changed overnight
 - where founder attention is needed
 
-## To Add
+## To Add Later
 - sales coaching loop
 - sprint health brief
 - weekly operating review
