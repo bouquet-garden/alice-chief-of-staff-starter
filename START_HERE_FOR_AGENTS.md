@@ -6,13 +6,15 @@ If you are an agent installing or operating Alice, read in this order:
 2. [`docs/first-hour-walkthrough.md`](docs/first-hour-walkthrough.md)
 3. [`prompts/alice-bootstrap-prompt-v1.txt`](prompts/alice-bootstrap-prompt-v1.txt)
 4. [`docs/alice-onboarding-wizard-spec-v1.md`](docs/alice-onboarding-wizard-spec-v1.md)
-5. [`docs/source-of-truths.md`](docs/source-of-truths.md)
-6. [`docs/alice-patterns-worth-stealing.md`](docs/alice-patterns-worth-stealing.md)
-7. [`docs/design-principles.md`](docs/design-principles.md)
+5. [`docs/v2/README.md`](docs/v2/README.md)
+6. [`docs/source-of-truths.md`](docs/source-of-truths.md)
+7. [`docs/alice-patterns-worth-stealing.md`](docs/alice-patterns-worth-stealing.md)
+8. [`docs/design-principles.md`](docs/design-principles.md)
 
 ## Your job
 
 Install a chief-of-staff operating system, not a generic assistant.
+Every onboarding is custom; use defaults as scaffolding, then calibrate.
 
 That means:
 - build the workspace scaffold

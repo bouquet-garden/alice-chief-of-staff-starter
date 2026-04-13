@@ -1,0 +1,67 @@
+{
+  "display_information": {
+    "name": "Alice",
+    "description": "Founder OS Operator",
+    "background_color": "#1c1954"
+  },
+  "features": {
+    "app_home": { "home_tab_enabled": true, "messages_tab_enabled": true, "messages_tab_read_only_enabled": false },
+    "bot_user": { "display_name": "Alice", "always_online": false }
+  },
+  "oauth_config": {
+    "scopes": {
+      "bot": [
+        "app_mentions:read",
+        "chat:write",
+        "chat:write.customize",
+        "commands",
+        "channels:history",
+        "channels:read",
+        "channels:join",
+        "channels:write.topic",
+        "channels:write.invites",
+        "groups:read",
+        "im:history",
+        "im:read",
+        "im:write",
+        "mpim:history",
+        "mpim:read",
+        "mpim:write",
+        "reactions:read",
+        "reactions:write",
+        "pins:read",
+        "pins:write",
+        "reminders:read",
+        "reminders:write",
+        "bookmarks:write",
+        "files:read",
+        "files:write",
+        "users:read",
+        "users:read.email",
+        "search:read.public",
+        "search:read.im",
+        "search:read.mpim",
+        "search:read.files",
+        "assistant:write"
+      ]
+    }
+  },
+  "settings": {
+    "event_subscriptions": {
+      "bot_events": [
+        "app_mention",
+        "channel_created",
+        "message.channels",
+        "message.im",
+        "pin_added",
+        "pin_removed",
+        "reaction_added",
+        "reaction_removed"
+      ]
+    },
+    "interactivity": { "is_enabled": true },
+    "socket_mode_enabled": true,
+    "token_rotation_enabled": false,
+    "org_deploy_enabled": false
+  }
+}

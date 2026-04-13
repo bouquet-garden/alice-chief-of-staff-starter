@@ -84,6 +84,42 @@ It is a stack:
 
 The gap between “I use AI” and “AI runs meaningful parts of my life/work” is architecture, not vibes.
 
+## v2: Founder OS Core (implemented)
+
+v2 pushes beyond onboarding docs into a cohesive operating pipeline:
+
+1. Messaging OS
+2. Email OS
+3. Transcript Intelligence
+4. Source-of-Truth Connectors
+5. Backtest Engine
+6. World-State Cache
+7. Founder Calibration Layer
+8. Compound Learning + Nightshift
+
+Start here:
+- [`docs/v2/README.md`](docs/v2/README.md)
+- [`docs/v2/messaging-os.md`](docs/v2/messaging-os.md)
+- [`docs/v2/email-os.md`](docs/v2/email-os.md)
+- [`docs/v2/transcript-intelligence.md`](docs/v2/transcript-intelligence.md)
+- [`docs/v2/source-connectors.md`](docs/v2/source-connectors.md)
+- [`docs/v2/backtest-engine.md`](docs/v2/backtest-engine.md)
+- [`docs/v2/world-state-cache.md`](docs/v2/world-state-cache.md)
+- [`docs/v2/founder-calibration.md`](docs/v2/founder-calibration.md)
+- [`docs/v2/compound-learning-nightshift.md`](docs/v2/compound-learning-nightshift.md)
+
+## Custom by default
+
+This repo does **not** assume rigid prebuilt installs.
+Every Alice onboarding should be customized to the founder’s:
+- systems
+- operating style
+- risk posture
+- communication preferences
+- goals and work cadence
+
+Opinionated defaults are provided, then calibrated.
+
 ---
 
 ## Before you start
@@ -113,6 +149,7 @@ Then read:
 2. `docs/first-hour-walkthrough.md`
 3. `prompts/alice-bootstrap-prompt-v1.txt`
 4. `docs/alice-onboarding-wizard-spec-v1.md`
+5. `docs/v2/README.md`
 
 ### Option B — bootstrap an OpenClaw workspace directly
 ```bash
@@ -176,6 +213,21 @@ docs/
   world-state-and-accountability.md
   why-this-exists.md
   review-scorecard.md
+  v2/
+    README.md
+    messaging-os.md
+    email-os.md
+    transcript-intelligence.md
+    transcript-ingestion-granola-mcp.md
+    transcript-ingestion-manual-md.md
+    source-connectors.md
+    source-connectors-notion-obsidian.md
+    slack-manifest-guide.md
+    backtest-engine.md
+    world-state-cache.md
+    founder-calibration.md
+    compound-learning-nightshift.md
+    upstream-patch-protocol.md
 
 templates/workspace/
   IDENTITY.md
@@ -199,7 +251,14 @@ scripts/
   bootstrap-openclaw-workspace.sh
   install-gbrain.sh
   install-gstack.sh
+  propose-telegram-topics.sh
+  import-transcripts.py
   review.sh
+
+manifests/
+  slack/
+    alice-starter.manifest.json
+    alice-operator.manifest.json
 
 examples/
   founder-discovery.md
