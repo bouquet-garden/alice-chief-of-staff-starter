@@ -2,17 +2,16 @@
 
 If you are an agent installing or operating Alice, read in this order:
 
-1. [`docs/prerequisites.md`](docs/prerequisites.md)
-2. [`docs/first-hour-walkthrough.md`](docs/first-hour-walkthrough.md)
-3. [`prompts/alice-bootstrap-prompt-v1.txt`](prompts/alice-bootstrap-prompt-v1.txt)
-4. [`docs/alice-onboarding-wizard-spec-v1.md`](docs/alice-onboarding-wizard-spec-v1.md)
-5. [`docs/v2/README.md`](docs/v2/README.md)
-6. [`docs/v2/alice-v2-product-vision.md`](docs/v2/alice-v2-product-vision.md)
-7. [`docs/v2/feature-status-matrix.md`](docs/v2/feature-status-matrix.md)
-8. [`docs/v2/onboarding-confidence-flow.md`](docs/v2/onboarding-confidence-flow.md)
-9. [`docs/source-of-truths.md`](docs/source-of-truths.md)
-10. [`docs/alice-patterns-worth-stealing.md`](docs/alice-patterns-worth-stealing.md)
-11. [`docs/design-principles.md`](docs/design-principles.md)
+1. [`docs/README.md`](docs/README.md)
+2. [`docs/PRODUCT_VISION.md`](docs/PRODUCT_VISION.md)
+3. [`docs/FEATURE_STATUS.md`](docs/FEATURE_STATUS.md)
+4. [`docs/ONBOARDING.md`](docs/ONBOARDING.md)
+5. [`docs/SETTINGS_AND_OUTCOMES.md`](docs/SETTINGS_AND_OUTCOMES.md)
+6. [`docs/INTERACTIVE_OUTPUTS.md`](docs/INTERACTIVE_OUTPUTS.md)
+7. [`docs/WHAT_ALICE_IS_AND_IS_NOT.md`](docs/WHAT_ALICE_IS_AND_IS_NOT.md)
+8. [`docs/prerequisites.md`](docs/prerequisites.md)
+9. [`docs/first-hour-walkthrough.md`](docs/first-hour-walkthrough.md)
+10. [`prompts/alice-bootstrap-prompt-v1.txt`](prompts/alice-bootstrap-prompt-v1.txt)
 
 ## Your job
 

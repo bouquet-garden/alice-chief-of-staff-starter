@@ -1,59 +1,32 @@
-# Alice v2 — Founder OS Core
+# Alice v2 Module Specs
 
-This is the v2 implementation layer for **Alice as an intelligence/personality operating system**, not just an onboarding prompt.
+This folder contains **deeper module and implementation specs**.
 
-## Core modules
+> Canonical product docs are now top-level under [`docs/`](../README.md).
 
-0. [Product Vision (v2)](alice-v2-product-vision.md)
-1. [Messaging OS](messaging-os.md)
-2. [Email OS](email-os.md)
-3. [Transcript Intelligence](transcript-intelligence.md)
-4. [Source-of-Truth Connectors](source-connectors.md)
-5. [Backtest Engine](backtest-engine.md)
-6. [World-State Cache](world-state-cache.md)
-7. [Founder Calibration](founder-calibration.md)
-8. [Compound Learning + Nightshift](compound-learning-nightshift.md)
-9. [Upstream Patch Protocol](upstream-patch-protocol.md)
+## Read these first (top-level docs)
 
-## Confidence + accountability docs
+- [`../PRODUCT_VISION.md`](../PRODUCT_VISION.md)
+- [`../ONBOARDING.md`](../ONBOARDING.md)
+- [`../SETTINGS_AND_OUTCOMES.md`](../SETTINGS_AND_OUTCOMES.md)
+- [`../INTERACTIVE_OUTPUTS.md`](../INTERACTIVE_OUTPUTS.md)
+- [`../FEATURE_STATUS.md`](../FEATURE_STATUS.md)
+- [`../ROI_SCORECARD.md`](../ROI_SCORECARD.md)
+- [`../WHAT_ALICE_IS_AND_IS_NOT.md`](../WHAT_ALICE_IS_AND_IS_NOT.md)
 
-- [Feature Status Matrix (implemented vs planned)](feature-status-matrix.md)
-- [Onboarding Confidence Flow (concrete example)](onboarding-confidence-flow.md)
-- [Demo: First-Run Walkthrough](demo-first-run-walkthrough.md)
-- [Founder ROI Scorecard](founder-roi-scorecard.md)
-- [Dialogue Options & Outcomes](dialogue-options-and-outcomes.md)
-- [Interactive Output Examples](interactive-output-examples.md)
-- [What Alice Is — and Is Not](what-alice-is-and-is-not.md)
+## Module specs in this folder
 
-These docs are the anti-vaporware layer:
-- explicit scope labels
-- concrete artifacts
-- expected outcomes
-- continuation map for builders
-- realistic mental models before install
+- [Messaging OS](messaging-os.md)
+- [Email OS](email-os.md)
+- [Transcript Intelligence](transcript-intelligence.md)
+- [Source-of-Truth Connectors](source-connectors.md)
+- [Backtest Engine](backtest-engine.md)
+- [World-State Cache](world-state-cache.md)
+- [Founder Calibration](founder-calibration.md)
+- [Compound Learning + Nightshift](compound-learning-nightshift.md)
+- [Upstream Patch Protocol](upstream-patch-protocol.md)
 
-## Why v2 exists
-
-v1 proved an onboarding narrative.
-v2 installs a **cohesive pipeline**:
-- read live systems
-- normalize to entities
-- reconcile contradictions
-- draft high-quality outputs
-- require approval for irreversible external actions
-- learn from misses
-- patch improvements back to the public repo
-
-## Design stance
-
-- Every onboarding is custom.
-- No rigid prebuilt package assumptions.
-- Opinionated defaults + founder-specific calibration.
-- Reliability and trust over automation theater.
-
-## Reference repos
-
-- gbrain: <https://github.com/garrytan/gbrain>
-- gstack: <https://github.com/garrytan/gstack>
-- Hermes Agent: <https://github.com/nousresearch/hermes-agent>
-- OpenClaw: <https://github.com/openclaw/openclaw>
+Supporting integration docs:
+- [Slack Manifest Guide](slack-manifest-guide.md)
+- [Transcript Ingestion (Granola MCP)](transcript-ingestion-granola-mcp.md)
+- [Transcript Ingestion (Manual Markdown)](transcript-ingestion-manual-md.md)
