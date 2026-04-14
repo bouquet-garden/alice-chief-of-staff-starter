@@ -15,6 +15,19 @@ This is the v2 implementation layer for **Alice as an intelligence/personality o
 8. [Compound Learning + Nightshift](compound-learning-nightshift.md)
 9. [Upstream Patch Protocol](upstream-patch-protocol.md)
 
+## Confidence + accountability docs
+
+- [Feature Status Matrix (implemented vs planned)](feature-status-matrix.md)
+- [Onboarding Confidence Flow (concrete example)](onboarding-confidence-flow.md)
+- [Dialogue Options & Outcomes](dialogue-options-and-outcomes.md)
+- [Interactive Output Examples](interactive-output-examples.md)
+
+These docs are the anti-vaporware layer:
+- explicit scope labels
+- concrete artifacts
+- expected outcomes
+- continuation map for builders
+
 ## Why v2 exists
 
 v1 proved an onboarding narrative.
@@ -38,4 +51,5 @@ v2 installs a **cohesive pipeline**:
 
 - gbrain: <https://github.com/garrytan/gbrain>
 - gstack: <https://github.com/garrytan/gstack>
+- Hermes Agent: <https://github.com/nousresearch/hermes-agent>
 - OpenClaw: <https://github.com/openclaw/openclaw>

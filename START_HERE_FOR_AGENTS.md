@@ -8,9 +8,11 @@ If you are an agent installing or operating Alice, read in this order:
 4. [`docs/alice-onboarding-wizard-spec-v1.md`](docs/alice-onboarding-wizard-spec-v1.md)
 5. [`docs/v2/README.md`](docs/v2/README.md)
 6. [`docs/v2/alice-v2-product-vision.md`](docs/v2/alice-v2-product-vision.md)
-7. [`docs/source-of-truths.md`](docs/source-of-truths.md)
-8. [`docs/alice-patterns-worth-stealing.md`](docs/alice-patterns-worth-stealing.md)
-9. [`docs/design-principles.md`](docs/design-principles.md)
+7. [`docs/v2/feature-status-matrix.md`](docs/v2/feature-status-matrix.md)
+8. [`docs/v2/onboarding-confidence-flow.md`](docs/v2/onboarding-confidence-flow.md)
+9. [`docs/source-of-truths.md`](docs/source-of-truths.md)
+10. [`docs/alice-patterns-worth-stealing.md`](docs/alice-patterns-worth-stealing.md)
+11. [`docs/design-principles.md`](docs/design-principles.md)
 
 ## Your job
 

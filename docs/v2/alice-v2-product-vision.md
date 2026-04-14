@@ -23,6 +23,7 @@ By the end of onboarding, the user should feel:
 
 - **gbrain** demonstrates durable, personal/world knowledge structures.
 - **gstack** demonstrates practical execution/tooling structure for coding and operator workflows.
+- **Hermes Agent** demonstrates strong productized agent documentation and multi-surface clarity.
 - **Alice v2** combines these ideas into a founder-facing product layer:
   - identity + judgment
   - source-of-truth reconciliation
@@ -217,6 +218,7 @@ Alice should ship interactive outputs across surfaces, not static text blobs.
 Primary references:
 - gbrain: <https://github.com/garrytan/gbrain>
 - gstack: <https://github.com/garrytan/gstack>
+- Hermes Agent: <https://github.com/nousresearch/hermes-agent>
 - OpenClaw: <https://github.com/openclaw/openclaw>
 
 Current implementation repo:
@@ -260,6 +262,17 @@ Every new module should include:
 - safety gates
 - confidence/provenance behavior
 - concrete examples
+- implemented-vs-planned labeling with evidence links
+
+## Anti-vaporware contract
+
+For external communication and user trust:
+
+1. Label every claim as **Implemented**, **Spec**, or **Planned**.
+2. For every Implemented claim, link to a concrete file/script/manifest.
+3. Show at least one real output example per feature area.
+4. Keep "what to build next" explicit, scoped, and testable.
+5. Never imply auto-action for external sends without explicit approval settings.
 
 ---
 
