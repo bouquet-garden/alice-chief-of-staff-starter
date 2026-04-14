@@ -1,0 +1,102 @@
+{
+  "labels": [
+    {
+      "name": "Alice/P0",
+      "color_hex": "#cc0000",
+      "purpose": "Requires same-day response — high urgency, high stakes",
+      "auto_rules": [
+        "Keywords: 'urgent', 'ASAP', 'today', 'blocking', 'P0' in subject or body",
+        "Emails from VIP contacts (investors, board, key customers) with an explicit ask",
+        "Any thread where Alice detects a hard deadline within 24 hours",
+        "Escalation replies where a prior email has gone unanswered 48h+"
+      ]
+    },
+    {
+      "name": "Alice/P1",
+      "color_hex": "#e67e00",
+      "purpose": "Requires response within 24 hours",
+      "auto_rules": [
+        "Keywords: 'by end of week', 'by tomorrow', 'please respond', 'following up'",
+        "Emails from partners, customers, or leads with an explicit question or request",
+        "Contract or proposal threads awaiting a decision",
+        "Calendar invites or scheduling requests that need acceptance/decline"
+      ]
+    },
+    {
+      "name": "Alice/P2",
+      "color_hex": "#e6c200",
+      "purpose": "Requires response within 72 hours",
+      "auto_rules": [
+        "Emails with a soft deadline or FYI ask that still require a reply",
+        "Intro emails, referrals, and inbound partnership inquiries",
+        "Vendor or tool renewal notices with action required",
+        "Internal team threads where a decision or acknowledgment is pending"
+      ]
+    },
+    {
+      "name": "Alice/P3",
+      "color_hex": "#1a73e8",
+      "purpose": "Low priority — informational or no explicit action required",
+      "auto_rules": [
+        "Newsletters, digest emails, and product updates",
+        "CC/BCC'd threads where the sender is informing, not asking",
+        "Read receipts, auto-replies, and confirmation emails",
+        "Threads where all action items belong to other parties"
+      ]
+    },
+    {
+      "name": "Alice/Ball-With-Us",
+      "color_hex": "#0f9d58",
+      "purpose": "Waiting on us to respond or act — we own the next move",
+      "auto_rules": [
+        "Emails with a direct question addressed to the inbox owner",
+        "Threads where the last reply was from the external party",
+        "Any thread Alice drafted a response for but it hasn't been sent",
+        "Action items assigned to the inbox owner identified by Alice"
+      ]
+    },
+    {
+      "name": "Alice/Ball-With-Them",
+      "color_hex": "#5f6368",
+      "purpose": "Waiting on the other party — they own the next move",
+      "auto_rules": [
+        "Threads where the last reply is from the inbox owner",
+        "Emails where Alice detects a pending deliverable from the recipient",
+        "Proposals or documents sent, awaiting feedback or sign-off",
+        "Intro emails sent, awaiting a response from the recipient"
+      ]
+    },
+    {
+      "name": "Alice/Stale",
+      "color_hex": "#9334e6",
+      "purpose": "No response or action in 7+ days — needs review or close-out",
+      "auto_rules": [
+        "Any P0 or P1 thread with no activity for 7+ days",
+        "Ball-With-Them threads with no reply in 7+ days",
+        "Ball-With-Us threads that were not acted on within SLA",
+        "Open commitments from email threads where the deadline has passed"
+      ]
+    },
+    {
+      "name": "Alice/Draft-Ready",
+      "color_hex": "#00897b",
+      "purpose": "Alice has prepared a draft response — awaiting human review and approval",
+      "auto_rules": [
+        "Applied automatically by Alice when a draft is written and staged",
+        "P0/P1 threads where Alice has generated a suggested reply",
+        "Removed automatically when the draft is sent or discarded"
+      ]
+    },
+    {
+      "name": "Alice/Triaged",
+      "color_hex": "#b0bec5",
+      "purpose": "Processed by Alice — no action needed, safe to archive",
+      "auto_rules": [
+        "Emails fully handled: response sent, task created, or decision logged",
+        "P3 emails Alice determined require no action after analysis",
+        "Auto-applied after Alice marks a thread as resolved in its queue",
+        "Applied to threads the human owner has explicitly dismissed"
+      ]
+    }
+  ]
+}

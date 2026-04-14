@@ -6,7 +6,59 @@
   },
   "features": {
     "app_home": { "home_tab_enabled": true, "messages_tab_enabled": true, "messages_tab_read_only_enabled": false },
-    "bot_user": { "display_name": "Alice", "always_online": false }
+    "bot_user": { "display_name": "Alice", "always_online": false },
+    "slash_commands": [
+      {
+        "command": "/alice-brief",
+        "description": "Generate your morning brief or meeting prep summary",
+        "usage_hint": "[meeting|morning|eod]",
+        "should_escape": false
+      },
+      {
+        "command": "/alice-reconcile",
+        "description": "Reconcile open commitments, threads, and task states",
+        "usage_hint": "[threads|tasks|all]",
+        "should_escape": false
+      },
+      {
+        "command": "/alice-followups",
+        "description": "List and triage outstanding follow-ups",
+        "usage_hint": "[overdue|today|week]",
+        "should_escape": false
+      },
+      {
+        "command": "/alice-seed",
+        "description": "Seed Alice with context from a message, thread, or document",
+        "usage_hint": "[context text or URL]",
+        "should_escape": false
+      },
+      {
+        "command": "/alice-status",
+        "description": "Get Alice's current operational status and queue depth",
+        "usage_hint": "",
+        "should_escape": false
+      },
+      {
+        "command": "/alice-calibrate",
+        "description": "Adjust Alice's behavior, tone, or priorities",
+        "usage_hint": "[preference or instruction]",
+        "should_escape": false
+      }
+    ],
+    "shortcuts": [
+      {
+        "name": "Ask Alice",
+        "type": "global",
+        "callback_id": "ask_alice_global",
+        "description": "Send a message or question to Alice from anywhere in Slack"
+      },
+      {
+        "name": "Brief me",
+        "type": "message",
+        "callback_id": "brief_me_message",
+        "description": "Ask Alice to summarize this message thread or provide context"
+      }
+    ]
   },
   "oauth_config": {
     "scopes": {
