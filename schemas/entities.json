@@ -1,0 +1,454 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://alice.local/schemas/entities.json",
+  "title": "Alice World-State Entity Schemas",
+  "description": "JSON Schema definitions for all entity types stored in Alice's file-based world-state cache.",
+  "$defs": {
+    "canonical_id": {
+      "type": "string",
+      "description": "Stable, human-readable unique identifier. Format: <type>-<slug>. Example: person-jason-wu",
+      "pattern": "^[a-z]+-[a-z0-9-]+$"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Confidence score for this entity record. 1.0 = manually confirmed, <0.7 = flag for review."
+    },
+    "provenance": {
+      "type": "object",
+      "description": "Where this entity record (or a specific fact) was derived from.",
+      "properties": {
+        "source_type": {
+          "type": "string",
+          "enum": ["email", "slack", "notion", "transcript", "calendar", "manual", "crm", "inferred"],
+          "description": "Type of source system."
+        },
+        "source_id": {
+          "type": "string",
+          "description": "Identifier within the source system (e.g., email message-id, Slack ts, Notion page id)."
+        },
+        "extracted_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When Alice extracted or observed this fact."
+        },
+        "extractor": {
+          "type": "string",
+          "description": "Which script or agent produced this record. E.g., 'email-import-v1', 'transcript-ingest'."
+        }
+      },
+      "required": ["source_type", "extracted_at"]
+    },
+    "open_loop": {
+      "type": "object",
+      "description": "An unresolved commitment, question, or action item associated with this entity.",
+      "properties": {
+        "id": { "type": "string" },
+        "description": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["open", "pending", "resolved", "stale"]
+        },
+        "ball_with": {
+          "type": "string",
+          "description": "Who currently holds the ball: 'us', 'them', or a canonical_id."
+        },
+        "due_date": { "type": "string", "format": "date" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "resolved_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "description", "status"]
+    },
+    "contact_info": {
+      "type": "object",
+      "description": "Contact information for a person.",
+      "properties": {
+        "email": {
+          "type": "array",
+          "items": { "type": "string", "format": "email" },
+          "description": "Known email addresses. First entry is preferred."
+        },
+        "phone": { "type": "string" },
+        "linkedin": { "type": "string", "format": "uri" },
+        "twitter": { "type": "string" },
+        "slack_handle": { "type": "string" },
+        "telegram": { "type": "string" },
+        "timezone": {
+          "type": "string",
+          "description": "IANA timezone. E.g., 'America/New_York'."
+        }
+      }
+    },
+    "linked_source": {
+      "type": "object",
+      "description": "A reference to a raw source document that contributed to this entity.",
+      "properties": {
+        "source_type": {
+          "type": "string",
+          "enum": ["email", "slack", "notion", "transcript", "calendar", "crm", "manual"]
+        },
+        "source_id": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "title": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" }
+      },
+      "required": ["source_type", "source_id"]
+    },
+
+    "person": {
+      "type": "object",
+      "title": "Person",
+      "description": "A person Alice tracks — investor, customer, partner, candidate, advisor, etc.",
+      "properties": {
+        "canonical_id": { "$ref": "#/$defs/canonical_id" },
+        "entity_type": { "type": "string", "const": "person" },
+        "name": {
+          "type": "string",
+          "description": "Full canonical name."
+        },
+        "aliases": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Alternative names, nicknames, or email display names observed for this person."
+        },
+        "company": {
+          "type": "string",
+          "description": "canonical_id of the associated company entity, or a plain name if not yet resolved."
+        },
+        "role": {
+          "type": "string",
+          "description": "Current title or role. E.g., 'Partner', 'VP of Engineering'."
+        },
+        "contact_info": { "$ref": "#/$defs/contact_info" },
+        "relationship_tier": {
+          "type": "string",
+          "enum": ["A", "B", "C"],
+          "description": "A = active / high-priority. B = warm / occasional. C = cold / background."
+        },
+        "last_contact": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of most recent substantive interaction."
+        },
+        "open_loops": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/open_loop" },
+          "description": "Unresolved commitments or action items with this person."
+        },
+        "linked_sources": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/linked_source" }
+        },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When this record was last written."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Free-form notes about this person. Alice appends; human can edit."
+        }
+      },
+      "required": ["canonical_id", "entity_type", "name", "updated_at"]
+    },
+
+    "company": {
+      "type": "object",
+      "title": "Company",
+      "description": "An organization Alice tracks — customer, investor, partner, vendor, or competitor.",
+      "properties": {
+        "canonical_id": { "$ref": "#/$defs/canonical_id" },
+        "entity_type": { "type": "string", "const": "company" },
+        "name": { "type": "string" },
+        "aliases": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Alternate names, legal names, or abbreviations."
+        },
+        "domain": {
+          "type": "string",
+          "description": "Primary web domain. E.g., 'meridianvc.com'. Used for email-based deduplication."
+        },
+        "relationship_type": {
+          "type": "string",
+          "enum": ["customer", "investor", "partner", "vendor", "competitor", "prospect", "other"],
+          "description": "How this company relates to the user's business."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "inactive", "churned", "prospect", "closed_lost"],
+          "description": "Current relationship status."
+        },
+        "owner": {
+          "type": "string",
+          "description": "canonical_id of the person who owns this relationship on Alice's side."
+        },
+        "linked_sources": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/linked_source" }
+        },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "notes": { "type": "string" }
+      },
+      "required": ["canonical_id", "entity_type", "name", "updated_at"]
+    },
+
+    "project": {
+      "type": "object",
+      "title": "Project",
+      "description": "A named initiative Alice tracks with status, owner, and deadlines.",
+      "properties": {
+        "canonical_id": { "$ref": "#/$defs/canonical_id" },
+        "entity_type": { "type": "string", "const": "project" },
+        "name": { "type": "string" },
+        "aliases": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "stalled", "complete", "blocked", "not_started"],
+          "description": "active = in-flight. stalled = no update in 7+ days. blocked = waiting on external. complete = done."
+        },
+        "owner": {
+          "type": "string",
+          "description": "canonical_id of the person responsible."
+        },
+        "due_date": { "type": "string", "format": "date" },
+        "linked_sources": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/linked_source" }
+        },
+        "open_loops": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/open_loop" }
+        },
+        "last_update": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the most recent substantive update was observed."
+        },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["canonical_id", "entity_type", "name", "status", "updated_at"]
+    },
+
+    "opportunity": {
+      "type": "object",
+      "title": "Opportunity",
+      "description": "A sales, fundraising, or partnership opportunity being tracked.",
+      "properties": {
+        "canonical_id": { "$ref": "#/$defs/canonical_id" },
+        "entity_type": { "type": "string", "const": "opportunity" },
+        "name": { "type": "string" },
+        "company": {
+          "type": "string",
+          "description": "canonical_id of the associated company."
+        },
+        "stage": {
+          "type": "string",
+          "description": "Pipeline stage. E.g., 'intro', 'diligence', 'term_sheet', 'closed_won', 'closed_lost'."
+        },
+        "value": {
+          "type": "number",
+          "description": "Estimated value in USD (or applicable currency unit)."
+        },
+        "owner": {
+          "type": "string",
+          "description": "canonical_id of the person managing this opportunity."
+        },
+        "probability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Estimated probability of close, 0–100."
+        },
+        "next_action": {
+          "type": "string",
+          "description": "The specific next action required to advance this opportunity."
+        },
+        "next_action_date": {
+          "type": "string",
+          "format": "date",
+          "description": "By when the next action must happen."
+        },
+        "linked_sources": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/linked_source" }
+        },
+        "open_loops": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/open_loop" }
+        },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["canonical_id", "entity_type", "name", "updated_at"]
+    },
+
+    "meeting": {
+      "type": "object",
+      "title": "Meeting",
+      "description": "A recorded or observed meeting, call, or sync.",
+      "properties": {
+        "canonical_id": { "$ref": "#/$defs/canonical_id" },
+        "entity_type": { "type": "string", "const": "meeting" },
+        "title": { "type": "string" },
+        "date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the meeting occurred."
+        },
+        "participants": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of canonical_ids (person) or plain names if not yet resolved."
+        },
+        "type": {
+          "type": "string",
+          "enum": ["internal", "investor", "customer", "sales", "hiring", "board", "1:1", "all_hands", "other"],
+          "description": "Category of meeting."
+        },
+        "projects": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "canonical_ids of related projects."
+        },
+        "companies": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "canonical_ids of related companies."
+        },
+        "decisions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "canonical_ids of decision entities created from this meeting, or inline summaries."
+        },
+        "action_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "description": { "type": "string" },
+              "owner": { "type": "string" },
+              "due_date": { "type": "string", "format": "date" },
+              "status": { "type": "string", "enum": ["open", "done", "stale"] }
+            },
+            "required": ["description"]
+          }
+        },
+        "follow_up_needed": {
+          "type": "boolean",
+          "description": "True if Alice has identified at least one unresolved follow-up."
+        },
+        "source": { "$ref": "#/$defs/linked_source" },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["canonical_id", "entity_type", "title", "date", "updated_at"]
+    },
+
+    "decision": {
+      "type": "object",
+      "title": "Decision",
+      "description": "A recorded decision with context, rationale, and linkage to meeting or project.",
+      "properties": {
+        "canonical_id": { "$ref": "#/$defs/canonical_id" },
+        "entity_type": { "type": "string", "const": "decision" },
+        "summary": {
+          "type": "string",
+          "description": "One-sentence statement of the decision made."
+        },
+        "made_by": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "canonical_ids (person) or plain names of who made this decision."
+        },
+        "date": { "type": "string", "format": "date" },
+        "context": {
+          "type": "string",
+          "description": "Why this decision was made; what alternatives were considered."
+        },
+        "linked_project": {
+          "type": "string",
+          "description": "canonical_id of related project, if applicable."
+        },
+        "linked_meeting": {
+          "type": "string",
+          "description": "canonical_id of the meeting where this decision was made."
+        },
+        "reversible": {
+          "type": "boolean",
+          "description": "True if this decision can be easily reversed (Type 2). False if hard to undo (Type 1)."
+        },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["canonical_id", "entity_type", "summary", "updated_at"]
+    },
+
+    "thread": {
+      "type": "object",
+      "title": "Thread",
+      "description": "A tracked communication thread across email, Slack, or other channels.",
+      "properties": {
+        "canonical_id": { "$ref": "#/$defs/canonical_id" },
+        "entity_type": { "type": "string", "const": "thread" },
+        "subject": {
+          "type": "string",
+          "description": "Subject line or thread title."
+        },
+        "channel": {
+          "type": "string",
+          "enum": ["email", "slack", "telegram", "sms", "notion", "other"],
+          "description": "Communication channel."
+        },
+        "participants": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "canonical_ids (person) or plain names."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["open", "pending", "closed", "stale"],
+          "description": "open = active conversation. pending = waiting on response. closed = resolved. stale = no activity past TTL."
+        },
+        "last_activity": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the most recent message in this thread."
+        },
+        "owner": {
+          "type": "string",
+          "description": "canonical_id (person) who is responsible for this thread on Alice's side."
+        },
+        "open_loops": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/open_loop" },
+          "description": "Unresolved action items or commitments in this thread."
+        },
+        "linked_entities": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "canonical_ids of persons, companies, projects, or opportunities referenced in this thread."
+        },
+        "updated_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["canonical_id", "entity_type", "subject", "channel", "status", "updated_at"]
+    }
+  },
+
+  "type": "object",
+  "description": "Top-level wrapper. An entity file contains exactly one entity of any defined type.",
+  "oneOf": [
+    { "$ref": "#/$defs/person" },
+    { "$ref": "#/$defs/company" },
+    { "$ref": "#/$defs/project" },
+    { "$ref": "#/$defs/opportunity" },
+    { "$ref": "#/$defs/meeting" },
+    { "$ref": "#/$defs/decision" },
+    { "$ref": "#/$defs/thread" }
+  ]
+}
