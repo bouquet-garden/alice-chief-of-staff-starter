@@ -1,0 +1,128 @@
+{
+  "canonical_id": "company-meridian-capital",
+  "entity_type": "company",
+  "name": "Meridian Capital",
+  "aliases": [
+    "Meridian",
+    "Meridian VC",
+    "Meridian Capital Partners"
+  ],
+  "domain": "meridianvc.com",
+  "relationship_type": "investor",
+  "status": "active",
+  "owner": "person-maya-patel",
+  "tier": "A",
+  "description": "Early-stage VC fund ($350M AUM) focused on Series A/B in B2B SaaS, fintech, and developer infrastructure. Based in San Francisco. Currently evaluating Aria for a $2.5M Series A lead investment.",
+  "key_people": [
+    {
+      "canonical_id": "person-jason-wu",
+      "name": "Jason Wu",
+      "role": "Partner",
+      "email": "jason@meridianvc.com",
+      "is_primary_contact": true,
+      "notes": "Lead partner on the Aria evaluation. Former VP Product at Lattice. Direct, numbers-oriented communication style. Focuses on unit economics and retention metrics."
+    },
+    {
+      "canonical_id": "person-lisa-tran",
+      "name": "Lisa Tran",
+      "role": "Principal",
+      "email": "lisa@meridianvc.com",
+      "is_primary_contact": false,
+      "notes": "Supports Jason on deal evaluation. Ex-Goldman, Wharton MBA. Runs detailed financial models. Will likely handle diligence deep-dive on Aria's financials."
+    }
+  ],
+  "portfolio_companies_relevant": [
+    {
+      "name": "Canopy",
+      "relationship": "Portfolio company — potential overlap with Aria in workflow automation. Recommended framing: complementary (Aria = communication layer, Canopy = workflow layer).",
+      "investment": "Series A, $12M, 2023"
+    },
+    {
+      "name": "TrueNorth",
+      "relationship": "Portfolio company — analytics platform. No overlap with Aria.",
+      "investment": "Series A, $8M, 2024"
+    }
+  ],
+  "investment_committee": {
+    "meeting_cadence": "Biweekly, Thursdays",
+    "next_known_date": "2026-04-24",
+    "notes": "If targeting Apr 24 IC, all materials needed by Apr 21. If May 8, more breathing room."
+  },
+  "open_loops": [
+    {
+      "id": "ol-meridian-001",
+      "description": "Data room access requested by Jason Wu (Apr 11). Draft reply prepared but not yet sent.",
+      "status": "open",
+      "ball_with": "us",
+      "due_date": "2026-04-13",
+      "created_at": "2026-04-11T09:15:00Z"
+    },
+    {
+      "id": "ol-meridian-002",
+      "description": "Q1 revenue breakdown by segment requested by Jason Wu (Apr 11). Included in data room.",
+      "status": "open",
+      "ball_with": "us",
+      "due_date": "2026-04-13",
+      "created_at": "2026-04-11T09:15:00Z"
+    },
+    {
+      "id": "ol-meridian-003",
+      "description": "Confirm Meridian IC timeline — need to ask Jason when they plan to bring Aria to investment committee.",
+      "status": "open",
+      "ball_with": "us",
+      "due_date": "2026-04-13",
+      "created_at": "2026-04-08T18:00:00Z"
+    }
+  ],
+  "linked_sources": [
+    {
+      "source_type": "email",
+      "source_id": "msg-meridian-diligence-20260411",
+      "title": "Re: Aria x Meridian Capital — Series A diligence next steps",
+      "date": "2026-04-11T09:15:00Z"
+    },
+    {
+      "source_type": "transcript",
+      "source_id": "transcript-meridian-intro-20260408",
+      "title": "Meridian Capital intro deep-dive (30m call)",
+      "date": "2026-04-08T10:30:00Z"
+    },
+    {
+      "source_type": "email",
+      "source_id": "msg-meridian-interest-20260403",
+      "title": "Re: Intro — Maya Patel / Aria",
+      "date": "2026-04-03T14:22:00Z"
+    },
+    {
+      "source_type": "email",
+      "source_id": "msg-meridian-outreach-20260328",
+      "title": "Intro: Maya Patel / Aria <> Jason Wu / Meridian",
+      "date": "2026-03-28T11:00:00Z"
+    },
+    {
+      "source_type": "calendar",
+      "source_id": "cal-meridian-checkin-20260413",
+      "title": "Meridian Capital check-in",
+      "date": "2026-04-13T10:30:00Z"
+    }
+  ],
+  "interaction_history": {
+    "first_contact": "2026-03-28",
+    "last_contact": "2026-04-11",
+    "total_interactions": 4,
+    "cadence_days_avg": 4.5,
+    "trend": "accelerating"
+  },
+  "related_opportunities": [
+    "opportunity-series-a-meridian"
+  ],
+  "confidence": 0.92,
+  "provenance": {
+    "source_type": "email",
+    "source_id": "msg-meridian-outreach-20260328",
+    "extracted_at": "2026-03-28T12:00:00Z",
+    "extractor": "email-import-v1"
+  },
+  "updated_at": "2026-04-13T08:10:00Z",
+  "notes": "Meridian is the leading Series A candidate. Jason Wu is the decision-maker; Lisa Tran runs diligence. Key risk: Canopy overlap perception — use complementary framing. IC meets biweekly Thursdays; target Apr 24 IC for fastest path to term sheet. Warm intro came through Sam Torres (co-founder) who worked with Jason at Lattice."
+}
