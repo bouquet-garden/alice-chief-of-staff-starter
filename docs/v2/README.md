@@ -4,6 +4,7 @@ This is the v2 implementation layer for **Alice as an intelligence/personality o
 
 ## Core modules
 
+0. [Product Vision (v2)](alice-v2-product-vision.md)
 1. [Messaging OS](messaging-os.md)
 2. [Email OS](email-os.md)
 3. [Transcript Intelligence](transcript-intelligence.md)
@@ -32,3 +33,9 @@ v2 installs a **cohesive pipeline**:
 - No rigid prebuilt package assumptions.
 - Opinionated defaults + founder-specific calibration.
 - Reliability and trust over automation theater.
+
+## Reference repos
+
+- gbrain: <https://github.com/garrytan/gbrain>
+- gstack: <https://github.com/garrytan/gstack>
+- OpenClaw: <https://github.com/openclaw/openclaw>

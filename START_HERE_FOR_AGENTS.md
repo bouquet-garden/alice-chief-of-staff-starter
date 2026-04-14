@@ -7,9 +7,10 @@ If you are an agent installing or operating Alice, read in this order:
 3. [`prompts/alice-bootstrap-prompt-v1.txt`](prompts/alice-bootstrap-prompt-v1.txt)
 4. [`docs/alice-onboarding-wizard-spec-v1.md`](docs/alice-onboarding-wizard-spec-v1.md)
 5. [`docs/v2/README.md`](docs/v2/README.md)
-6. [`docs/source-of-truths.md`](docs/source-of-truths.md)
-7. [`docs/alice-patterns-worth-stealing.md`](docs/alice-patterns-worth-stealing.md)
-8. [`docs/design-principles.md`](docs/design-principles.md)
+6. [`docs/v2/alice-v2-product-vision.md`](docs/v2/alice-v2-product-vision.md)
+7. [`docs/source-of-truths.md`](docs/source-of-truths.md)
+8. [`docs/alice-patterns-worth-stealing.md`](docs/alice-patterns-worth-stealing.md)
+9. [`docs/design-principles.md`](docs/design-principles.md)
 
 ## Your job
 

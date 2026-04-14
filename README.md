@@ -99,6 +99,7 @@ v2 pushes beyond onboarding docs into a cohesive operating pipeline:
 
 Start here:
 - [`docs/v2/README.md`](docs/v2/README.md)
+- [`docs/v2/alice-v2-product-vision.md`](docs/v2/alice-v2-product-vision.md)
 - [`docs/v2/messaging-os.md`](docs/v2/messaging-os.md)
 - [`docs/v2/email-os.md`](docs/v2/email-os.md)
 - [`docs/v2/transcript-intelligence.md`](docs/v2/transcript-intelligence.md)
@@ -150,6 +151,7 @@ Then read:
 3. `prompts/alice-bootstrap-prompt-v1.txt`
 4. `docs/alice-onboarding-wizard-spec-v1.md`
 5. `docs/v2/README.md`
+6. `docs/v2/alice-v2-product-vision.md`
 
 ### Option B — bootstrap an OpenClaw workspace directly
 ```bash
@@ -215,6 +217,7 @@ docs/
   review-scorecard.md
   v2/
     README.md
+    alice-v2-product-vision.md
     messaging-os.md
     email-os.md
     transcript-intelligence.md
