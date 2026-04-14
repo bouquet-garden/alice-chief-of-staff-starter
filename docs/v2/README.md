@@ -19,14 +19,18 @@ This is the v2 implementation layer for **Alice as an intelligence/personality o
 
 - [Feature Status Matrix (implemented vs planned)](feature-status-matrix.md)
 - [Onboarding Confidence Flow (concrete example)](onboarding-confidence-flow.md)
+- [Demo: First-Run Walkthrough](demo-first-run-walkthrough.md)
+- [Founder ROI Scorecard](founder-roi-scorecard.md)
 - [Dialogue Options & Outcomes](dialogue-options-and-outcomes.md)
 - [Interactive Output Examples](interactive-output-examples.md)
+- [What Alice Is — and Is Not](what-alice-is-and-is-not.md)
 
 These docs are the anti-vaporware layer:
 - explicit scope labels
 - concrete artifacts
 - expected outcomes
 - continuation map for builders
+- realistic mental models before install
 
 ## Why v2 exists
 

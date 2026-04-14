@@ -48,9 +48,12 @@ See the accountability matrix:
 - [`docs/v2/README.md`](docs/v2/README.md)
 - [`docs/v2/alice-v2-product-vision.md`](docs/v2/alice-v2-product-vision.md)
 - [`docs/v2/onboarding-confidence-flow.md`](docs/v2/onboarding-confidence-flow.md)
+- [`docs/v2/demo-first-run-walkthrough.md`](docs/v2/demo-first-run-walkthrough.md)
+- [`docs/v2/founder-roi-scorecard.md`](docs/v2/founder-roi-scorecard.md)
 - [`docs/v2/dialogue-options-and-outcomes.md`](docs/v2/dialogue-options-and-outcomes.md)
 - [`docs/v2/interactive-output-examples.md`](docs/v2/interactive-output-examples.md)
 - [`docs/v2/feature-status-matrix.md`](docs/v2/feature-status-matrix.md)
+- [`docs/v2/what-alice-is-and-is-not.md`](docs/v2/what-alice-is-and-is-not.md)
 
 If you are an agent/operator implementing this for a team:
 - [`START_HERE_FOR_AGENTS.md`](START_HERE_FOR_AGENTS.md)
@@ -93,6 +96,10 @@ A concrete onboarding should feel like this:
 
 Full walkthrough:
 - [`docs/v2/onboarding-confidence-flow.md`](docs/v2/onboarding-confidence-flow.md)
+- [`docs/v2/demo-first-run-walkthrough.md`](docs/v2/demo-first-run-walkthrough.md)
+
+Founder-value framing:
+- [`docs/v2/founder-roi-scorecard.md`](docs/v2/founder-roi-scorecard.md)
 
 ---
 
@@ -126,6 +133,9 @@ Alice outputs should be concrete and operationally useful:
 
 Concrete examples:
 - [`docs/v2/interactive-output-examples.md`](docs/v2/interactive-output-examples.md)
+
+Expectation-setting:
+- [`docs/v2/what-alice-is-and-is-not.md`](docs/v2/what-alice-is-and-is-not.md)
 
 ---
 
@@ -194,6 +204,8 @@ If you are continuing implementation, start here:
 - [`docs/v2/alice-v2-product-vision.md`](docs/v2/alice-v2-product-vision.md)
 - [`docs/v2/feature-status-matrix.md`](docs/v2/feature-status-matrix.md)
 - [`docs/v2/onboarding-confidence-flow.md`](docs/v2/onboarding-confidence-flow.md)
+- [`docs/v2/demo-first-run-walkthrough.md`](docs/v2/demo-first-run-walkthrough.md)
+- [`docs/v2/founder-roi-scorecard.md`](docs/v2/founder-roi-scorecard.md)
 - [`docs/v2/dialogue-options-and-outcomes.md`](docs/v2/dialogue-options-and-outcomes.md)
 - [`docs/v2/interactive-output-examples.md`](docs/v2/interactive-output-examples.md)
 
@@ -214,8 +226,11 @@ docs/
     alice-v2-product-vision.md
     feature-status-matrix.md
     onboarding-confidence-flow.md
+    demo-first-run-walkthrough.md
+    founder-roi-scorecard.md
     dialogue-options-and-outcomes.md
     interactive-output-examples.md
+    what-alice-is-and-is-not.md
     messaging-os.md
     email-os.md
     transcript-intelligence.md

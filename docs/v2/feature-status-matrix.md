@@ -23,8 +23,11 @@ Legend:
 | Founder calibration + autonomy ladder | ✅ | [`founder-calibration.md`](founder-calibration.md) | Explicit settings + calibration loop |
 | Backtest concept + output model | ✅ | [`backtest-engine.md`](backtest-engine.md) | Simulation/report model defined |
 | Onboarding confidence flow with examples | ✅ | [`onboarding-confidence-flow.md`](onboarding-confidence-flow.md) | Concrete dialogue + outputs |
+| Demo first-run walkthrough | ✅ | [`demo-first-run-walkthrough.md`](demo-first-run-walkthrough.md) | End-to-end first session simulation |
+| Founder ROI scorecard | ✅ | [`founder-roi-scorecard.md`](founder-roi-scorecard.md) | Concrete value model and success thresholds |
 | Dialogue options/settings cookbook | ✅ | [`dialogue-options-and-outcomes.md`](dialogue-options-and-outcomes.md) | Recommended defaults + outcomes |
 | Interactive output gallery (Slack/Telegram/Email/Notion/QMD/DB/vector) | ✅ | [`interactive-output-examples.md`](interactive-output-examples.md) | Concrete artifacts to set expectations |
+| Expectation-setting / anti-hype page | ✅ | [`what-alice-is-and-is-not.md`](what-alice-is-and-is-not.md) | Sets correct mental model before install |
 | End-to-end Email OS runnable pipeline | 🧪 | `email-os.md` + scripts/docs | Queue/state-machine implementation is next |
 | Entity DB schema + migrations | 🔜 | N/A | Add concrete SQL schema + migration scripts |
 | Vector retrieval pipeline + eval harness | 🔜 | N/A | Add embeddings contract + retrieval quality tests |
