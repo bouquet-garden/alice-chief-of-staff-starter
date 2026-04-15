@@ -59,12 +59,6 @@ To enable email seeding, choose one of:
     2. Run: gam create project && gam oauth create
     3. Re-run this script.
 
-  Option B — Gmail API key
-    1. Go to: https://console.cloud.google.com/apis/credentials
-    2. Create an API key with Gmail API scope enabled.
-    3. Export: export GMAIL_API_KEY=<your-key>
-    4. Re-run this script.
-
 Skipping email seed.
 EOF
   exit 0
@@ -98,50 +92,8 @@ fetch_via_gam() {
 
 # --- fetch_via_api ---
 fetch_via_api() {
-  local after_epoch="${CUTOFF_EPOCH}"
-  local page_token=""
-  local all_threads="[]"
-  local url_base="https://gmail.googleapis.com/gmail/v1/users/me/threads"
-
-  while true; do
-    local url="${url_base}?key=${GMAIL_API_KEY}&q=after:${after_epoch}&maxResults=100"
-    [[ -n "${page_token}" ]] && url="${url}&pageToken=${page_token}"
-
-    local resp
-    resp=$(curl -s --fail "${url}") || {
-      echo "  WARNING: Gmail API request failed." >&2
-      break
-    }
-
-    local batch
-    batch=$(echo "${resp}" | python3 -c "
-import json, sys
-d = json.load(sys.stdin)
-threads = d.get('threads', [])
-for t in threads:
-    print(json.dumps(t))
-" 2>/dev/null || true)
-
-    while IFS= read -r line; do
-      [[ -z "${line}" ]] && continue
-      all_threads=$(echo "${all_threads}" | python3 -c "
-import json, sys
-arr = json.load(sys.stdin)
-arr.append(json.loads('${line}'))
-print(json.dumps(arr))
-" 2>/dev/null || echo "${all_threads}")
-    done <<< "${batch}"
-
-    page_token=$(echo "${resp}" | python3 -c "
-import json, sys
-d = json.load(sys.stdin)
-print(d.get('nextPageToken', ''))
-" 2>/dev/null || true)
-
-    [[ -z "${page_token}" ]] && break
-  done
-
-  echo "${all_threads}"
+  echo "  ERROR: Gmail API requires OAuth credentials. Use 'gam' instead (see Option A above)." >&2
+  return 1
 }
 
 # --- classify_thread ---

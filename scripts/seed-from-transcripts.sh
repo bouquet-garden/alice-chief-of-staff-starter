@@ -90,17 +90,7 @@ ALL_ENTITIES="[]"
 for transcript_file in "${TRANSCRIPT_FILES[@]}"; do
   echo "  Processing: $(basename "${transcript_file}")"
 
-  # Run import-transcripts.py on the directory containing this file
-  # The script takes a directory, not a file — so we wrap single-file logic
-  transcript_dir="$(dirname "${transcript_file}")"
-  filename="$(basename "${transcript_file}")"
-
-  # Create a temp dir with just this file for per-file processing
-  tmp_dir=$(mktemp -d /tmp/seed-transcript-XXXXXX)
-  cp "${transcript_file}" "${tmp_dir}/${filename}"
-
-  output_json=$(python3 "${IMPORT_SCRIPT}" "${tmp_dir}" 2>/dev/null) && rc=0 || rc=$?
-  rm -rf "${tmp_dir}"
+  output_json=$(python3 "${IMPORT_SCRIPT}" "${transcript_file}" 2>/dev/null) && rc=0 || rc=$?
 
   if [[ ${rc} -ne 0 ]]; then
     echo "    WARNING: import failed for ${filename}" >&2
@@ -109,17 +99,15 @@ for transcript_file in "${TRANSCRIPT_FILES[@]}"; do
   fi
 
   # Merge into aggregate
-  ALL_ENTITIES=$(python3 -c "
-import json, sys
-
-existing_raw = '''${ALL_ENTITIES}'''
+  ALL_ENTITIES=$(EXISTING="${ALL_ENTITIES}" NEW="${output_json}" python3 -c "
+import json, sys, os
 try:
-    existing = json.loads(existing_raw)
+    existing = json.loads(os.environ['EXISTING'])
 except Exception:
     existing = []
 
 try:
-    new_batch = json.loads('''${output_json}''')
+    new_batch = json.loads(os.environ['NEW'])
     new_items = new_batch.get('transcripts', [])
 except Exception:
     new_items = []

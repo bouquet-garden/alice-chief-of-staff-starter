@@ -142,10 +142,10 @@ fetch_channel_history() {
       break
     fi
 
-    all_messages=$(echo "${resp}" | python3 -c "
-import json, sys
+    all_messages=$(echo "${resp}" | EXISTING="${all_messages}" python3 -c "
+import json, sys, os
 resp = json.load(sys.stdin)
-existing = json.loads('${all_messages}')
+existing = json.loads(os.environ['EXISTING'])
 existing.extend(resp.get('messages', []))
 print(json.dumps(existing))
 " 2>/dev/null || echo "${all_messages}")
@@ -330,10 +330,10 @@ for chan_entry in "${TARGET_CHANNELS[@]}"; do
   sig_count=$(echo "${signals}" | python3 -c "import json,sys; print(len(json.load(sys.stdin)))" 2>/dev/null || echo 0)
   echo "    ${sig_count} signals extracted"
 
-  ALL_SIGNALS=$(python3 -c "
-import json, sys
-existing = json.loads('${ALL_SIGNALS}')
-new = json.loads('''${signals}''')
+  ALL_SIGNALS=$(EXISTING="${ALL_SIGNALS}" NEW="${signals}" python3 -c "
+import json, sys, os
+existing = json.loads(os.environ['EXISTING'])
+new = json.loads(os.environ['NEW'])
 existing.extend(new)
 print(json.dumps(existing))
 " 2>/dev/null || echo "${ALL_SIGNALS}")
