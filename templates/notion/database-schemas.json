@@ -1,0 +1,152 @@
+{
+  "databases": [
+    {
+      "name": "Projects",
+      "description": "Active and planned initiatives with ownership and delivery tracking",
+      "properties": [
+        { "name": "Name", "type": "title", "description": "Project name" },
+        {
+          "name": "Status",
+          "type": "select",
+          "options": ["Backlog", "Planning", "Active", "On Hold", "Complete", "Cancelled"],
+          "description": "Current lifecycle state of the project"
+        },
+        { "name": "Owner", "type": "people", "description": "Primary owner / DRI" },
+        {
+          "name": "Priority",
+          "type": "select",
+          "options": ["P0 — Critical", "P1 — High", "P2 — Medium", "P3 — Low"],
+          "description": "Strategic priority tier"
+        },
+        { "name": "Due Date", "type": "date", "description": "Target completion or milestone date" },
+        { "name": "Links", "type": "url", "description": "Primary doc, spec, or tracking URL" },
+        { "name": "Notes", "type": "rich_text", "description": "Context, goals, or current blockers" },
+        { "name": "Last Updated", "type": "last_edited_time", "description": "Auto-tracked last edit timestamp" }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "description": "Granular action items linked to projects with assignee and deadline tracking",
+      "properties": [
+        { "name": "Name", "type": "title", "description": "Task description" },
+        { "name": "Project", "type": "relation", "relation_db": "Projects", "description": "Parent project this task belongs to" },
+        { "name": "Assignee", "type": "people", "description": "Person responsible for completing the task" },
+        {
+          "name": "Status",
+          "type": "status",
+          "options": ["Not Started", "In Progress", "Blocked", "In Review", "Done", "Cancelled"],
+          "description": "Current task state"
+        },
+        {
+          "name": "Priority",
+          "type": "select",
+          "options": ["Urgent", "High", "Medium", "Low"],
+          "description": "Task urgency relative to project goals"
+        },
+        { "name": "Due Date", "type": "date", "description": "When the task must be completed" },
+        {
+          "name": "Effort",
+          "type": "select",
+          "options": ["XS — 1h", "S — 2–4h", "M — 1 day", "L — 2–3 days", "XL — 1 week+"],
+          "description": "Estimated work effort"
+        },
+        { "name": "Created", "type": "created_time", "description": "Auto-tracked creation timestamp" }
+      ]
+    },
+    {
+      "name": "Meetings",
+      "description": "Meeting log with structured outputs — action items and decisions extracted by Alice",
+      "properties": [
+        { "name": "Title", "type": "title", "description": "Meeting name or subject" },
+        { "name": "Date", "type": "date", "description": "Date and time of the meeting" },
+        { "name": "Participants", "type": "people", "description": "Internal attendees" },
+        {
+          "name": "Type",
+          "type": "select",
+          "options": ["1:1", "Team Sync", "External / Sales", "Board", "Investor", "All Hands", "Strategy", "Interview", "Other"],
+          "description": "Meeting category"
+        },
+        { "name": "Project", "type": "relation", "relation_db": "Projects", "description": "Related project, if applicable" },
+        { "name": "Action Items", "type": "rich_text", "description": "Extracted action items with owners and due dates" },
+        { "name": "Decisions", "type": "rich_text", "description": "Key decisions made during the meeting" },
+        { "name": "Recording URL", "type": "url", "description": "Link to recording or transcript" },
+        { "name": "Notes", "type": "rich_text", "description": "Raw notes or Alice-generated summary" }
+      ]
+    },
+    {
+      "name": "People",
+      "description": "Contact database — investors, customers, partners, candidates, advisors",
+      "properties": [
+        { "name": "Name", "type": "title", "description": "Full name" },
+        { "name": "Company", "type": "rich_text", "description": "Current employer or organization" },
+        { "name": "Role", "type": "rich_text", "description": "Title or function" },
+        { "name": "Contact", "type": "email", "description": "Primary email address" },
+        {
+          "name": "Relationship",
+          "type": "select",
+          "options": ["Investor", "Customer", "Prospect", "Partner", "Advisor", "Candidate", "Team", "Vendor", "Press", "Other"],
+          "description": "Relationship type"
+        },
+        { "name": "Last Contact", "type": "date", "description": "Most recent interaction date" },
+        { "name": "Notes", "type": "rich_text", "description": "Context, history, or Alice-generated background brief" },
+        { "name": "LinkedIn", "type": "url", "description": "LinkedIn profile URL" }
+      ]
+    },
+    {
+      "name": "Experiments",
+      "description": "Hypothesis-driven experiments with outcomes tracked for learning",
+      "properties": [
+        { "name": "Name", "type": "title", "description": "Experiment name or shorthand" },
+        { "name": "Hypothesis", "type": "rich_text", "description": "If we do X, we expect Y because Z" },
+        {
+          "name": "Status",
+          "type": "select",
+          "options": ["Proposed", "Designed", "Running", "Analysing", "Complete", "Abandoned"],
+          "description": "Current experiment phase"
+        },
+        {
+          "name": "Result",
+          "type": "select",
+          "options": ["Pending", "Validated", "Invalidated", "Inconclusive"],
+          "description": "Outcome of the experiment"
+        },
+        { "name": "Owner", "type": "people", "description": "Person running the experiment" },
+        { "name": "Started", "type": "date", "description": "Experiment start date" },
+        { "name": "Completed", "type": "date", "description": "Experiment end or analysis date" },
+        { "name": "Key Learnings", "type": "rich_text", "description": "What we learned and what changes as a result" }
+      ]
+    },
+    {
+      "name": "OKRs",
+      "description": "Objective and Key Results tracker aligned to quarterly goals",
+      "properties": [
+        { "name": "Objective", "type": "title", "description": "The qualitative goal statement" },
+        {
+          "name": "Key Results",
+          "type": "rich_text",
+          "description": "Array of measurable outcomes — format: KR1: [metric] from [baseline] to [target]"
+        },
+        { "name": "Owner", "type": "people", "description": "Accountable executive or team lead" },
+        {
+          "name": "Quarter",
+          "type": "select",
+          "options": ["Q1 2025", "Q2 2025", "Q3 2025", "Q4 2025", "Q1 2026", "Q2 2026", "Q3 2026", "Q4 2026"],
+          "description": "Planning quarter"
+        },
+        {
+          "name": "Progress",
+          "type": "number",
+          "format": "percent",
+          "description": "Overall completion percentage (0–100)"
+        },
+        {
+          "name": "Status",
+          "type": "select",
+          "options": ["On Track", "At Risk", "Off Track", "Complete", "Cancelled"],
+          "description": "Health signal for this objective"
+        },
+        { "name": "Notes", "type": "rich_text", "description": "Weekly update, blockers, or context from Alice reconciliation" }
+      ]
+    }
+  ]
+}

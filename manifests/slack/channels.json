@@ -1,0 +1,34 @@
+{
+  "channels": [
+    {
+      "name": "alice-inbox",
+      "topic": "Thread triage + ownership tracking",
+      "purpose": "External commitments, stale threads, follow-up queue"
+    },
+    {
+      "name": "alice-briefings",
+      "topic": "Daily/weekly operating briefs",
+      "purpose": "Morning brief, meeting prep, EOD summary"
+    },
+    {
+      "name": "alice-ops",
+      "topic": "Operational coordination",
+      "purpose": "Task updates, blocker alerts, status changes"
+    },
+    {
+      "name": "alice-war-room",
+      "topic": "Urgent escalations only",
+      "purpose": "P0/P1 alerts, incident response, deadline breaches"
+    },
+    {
+      "name": "alice-builds",
+      "topic": "Build + delivery updates",
+      "purpose": "PR status, deploy alerts, QA handoffs"
+    },
+    {
+      "name": "alice-decisions",
+      "topic": "Decision log + context",
+      "purpose": "Decisions extracted from meetings/threads, pending decisions queue"
+    }
+  ]
+}

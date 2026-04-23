@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://alice.local/schemas/freshness-rules.json",
+  "description": "TTL and invalidation rules governing Alice's world-state cache. Loaded at agent startup and referenced by the cache manager before any entity read or write.",
+
+  "entity_freshness": {
+    "person": {
+      "ttl_days": 30,
+      "stale_after_days": 90,
+      "warn_after_days": 60,
+      "invalidate_on": ["new_email", "new_meeting", "new_transcript", "manual_update", "crm_sync"],
+      "notes": "Relationship-tier A persons refresh more aggressively; see tier_overrides below."
+    },
+    "company": {
+      "ttl_days": 60,
+      "stale_after_days": 180,
+      "warn_after_days": 120,
+      "invalidate_on": ["new_email", "new_meeting", "new_transcript", "manual_update", "crm_sync"],
+      "notes": "Company records are more stable than person records; domain matching drives deduplication."
+    },
+    "project": {
+      "ttl_days": 7,
+      "stale_after_days": 14,
+      "warn_after_days": 10,
+      "invalidate_on": ["new_email", "new_meeting", "new_transcript", "task_update", "manual_update"],
+      "notes": "Projects go stale fast. No update in 7 days → status set to 'stalled' automatically."
+    },
+    "opportunity": {
+      "ttl_days": 7,
+      "stale_after_days": 21,
+      "warn_after_days": 14,
+      "invalidate_on": ["new_email", "new_meeting", "new_transcript", "crm_sync", "manual_update"],
+      "notes": "Opportunities require frequent re-evaluation. Alice flags if no next_action_date within TTL."
+    },
+    "meeting": {
+      "ttl_days": 365,
+      "stale_after_days": 730,
+      "warn_after_days": 400,
+      "invalidate_on": ["transcript_import", "manual_update"],
+      "notes": "Meeting records are largely immutable once created. Invalidated only if a better transcript arrives."
+    },
+    "decision": {
+      "ttl_days": 365,
+      "stale_after_days": 730,
+      "warn_after_days": 400,
+      "invalidate_on": ["superseded_by_new_decision", "manual_update"],
+      "notes": "Decisions are append-only by default. To reverse a decision, create a new decision entity."
+    },
+    "thread": {
+      "ttl_days": 14,
+      "stale_after_days": 30,
+      "warn_after_days": 21,
+      "invalidate_on": ["new_message", "new_email", "new_slack_message", "manual_update"],
+      "notes": "Thread status auto-transitions to 'stale' when last_activity exceeds stale_after_days."
+    }
+  },
+
+  "tier_overrides": {
+    "description": "Relationship-tier A persons have tighter freshness windows.",
+    "person_tier_A": {
+      "ttl_days": 14,
+      "stale_after_days": 45,
+      "warn_after_days": 30
+    },
+    "person_tier_C": {
+      "ttl_days": 90,
+      "stale_after_days": 180,
+      "warn_after_days": 120
+    }
+  },
+
+  "reconciliation_rules": [
+    {
+      "id": "dedup-person-by-email",
+      "description": "If two person entities share an email address, flag for merge. Keep the record with higher confidence as canonical.",
+      "entity_type": "person",
+      "trigger": "on_write",
+      "match_fields": ["contact_info.email"],
+      "resolution": "flag_for_review",
+      "auto_merge_threshold": 0.95
+    },
+    {
+      "id": "dedup-company-by-domain",
+      "description": "If two company entities share a domain, flag for merge.",
+      "entity_type": "company",
+      "trigger": "on_write",
+      "match_fields": ["domain"],
+      "resolution": "flag_for_review",
+      "auto_merge_threshold": 0.90
+    },
+    {
+      "id": "conflicting-facts",
+      "description": "Never silently overwrite a field whose new value contradicts the stored value and confidence >= 0.8. Instead, append to a '_conflicts' array and surface for review.",
+      "entity_type": "*",
+      "trigger": "on_write",
+      "fields_protected": ["name", "company", "role", "relationship_tier", "stage", "value"],
+      "resolution": "append_conflict_log"
+    },
+    {
+      "id": "low-confidence-merge",
+      "description": "Any merge where either source confidence < 0.7 must be flagged for human review before the canonical record is updated.",
+      "entity_type": "*",
+      "trigger": "on_merge",
+      "confidence_threshold": 0.7,
+      "resolution": "flag_for_review"
+    },
+    {
+      "id": "provenance-required",
+      "description": "Every entity write must include a provenance block. Writes without provenance are rejected.",
+      "entity_type": "*",
+      "trigger": "on_write",
+      "resolution": "reject_write"
+    }
+  ],
+
+  "cache_warming_schedule": {
+    "description": "When Alice should proactively refresh cache layers, even without an explicit user trigger.",
+    "nightly": {
+      "cron": "0 2 * * *",
+      "description": "Nightly 2 AM local time: refresh all stale entities, regenerate daily brief, run reconciliation pass.",
+      "tasks": [
+        "refresh_stale_entities",
+        "regenerate_daily_brief",
+        "run_reconciliation_pass",
+        "archive_closed_threads"
+      ]
+    },
+    "pre_meeting": {
+      "trigger": "calendar_event_starts_in_minutes",
+      "lead_time_minutes": 30,
+      "description": "30 minutes before any calendar event with external participants: warm meeting prep brief.",
+      "tasks": [
+        "refresh_participant_entities",
+        "generate_meeting_prep_brief"
+      ]
+    },
+    "on_email_batch": {
+      "trigger": "new_email_batch_arrives",
+      "description": "After each email fetch: update person/thread/opportunity entities touched by the batch.",
+      "tasks": [
+        "update_touched_entities",
+        "update_open_loops",
+        "regenerate_inbox_brief"
+      ]
+    },
+    "on_transcript_import": {
+      "trigger": "transcript_file_added",
+      "description": "When a transcript file lands in inbox/: extract entities, decisions, action items.",
+      "tasks": [
+        "extract_entities_from_transcript",
+        "create_or_update_meeting_entity",
+        "update_linked_persons",
+        "create_decision_entities",
+        "update_open_loops"
+      ]
+    },
+    "manual_refresh": {
+      "trigger": "user_request",
+      "description": "User-triggered full refresh of a specific entity or entity type.",
+      "tasks": [
+        "refresh_entity",
+        "propagate_to_linked_entities"
+      ]
+    }
+  },
+
+  "brief_freshness": {
+    "daily_brief": {
+      "ttl_hours": 12,
+      "stale_after_hours": 24,
+      "description": "Daily brief regenerated nightly or when any P0 entity changes."
+    },
+    "meeting_prep_brief": {
+      "ttl_hours": 1,
+      "stale_after_hours": 6,
+      "description": "Meeting prep brief is short-lived; always regenerated before each meeting."
+    },
+    "follow_up_queue": {
+      "ttl_hours": 6,
+      "stale_after_hours": 24,
+      "description": "Follow-up queue rebuilt when threads or open_loops change."
+    }
+  }
+}

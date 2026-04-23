@@ -1,0 +1,48 @@
+{
+  "canonical_id": "person-jason-wu",
+  "entity_type": "person",
+  "name": "Jason Wu",
+  "aliases": ["Jason Wu (Meridian)", "J. Wu", "jwu@meridianvc.com"],
+  "company": "company-meridian-capital",
+  "role": "Partner",
+  "contact_info": {
+    "email": ["jwu@meridianvc.com"],
+    "linkedin": "https://linkedin.com/in/jasonwu-meridian",
+    "timezone": "America/New_York"
+  },
+  "relationship_tier": "A",
+  "last_contact": "2024-10-15",
+  "open_loops": [
+    {
+      "id": "loop-jason-wu-series-a-confirmation",
+      "description": "Confirm Thursday 3 PM deep-dive call. Jason's partner Sam Reiter will join. Send calendar invite.",
+      "status": "open",
+      "ball_with": "us",
+      "due_date": "2024-10-16",
+      "created_at": "2024-10-15T23:55:00Z"
+    }
+  ],
+  "linked_sources": [
+    {
+      "source_type": "email",
+      "source_id": "msg-20241009-001",
+      "title": "RE: Aria — Q3 metrics + cap table",
+      "date": "2024-10-09T14:22:00Z"
+    },
+    {
+      "source_type": "email",
+      "source_id": "msg-20241015-047",
+      "title": "RE: Aria — Q3 metrics + cap table",
+      "date": "2024-10-15T23:47:00Z"
+    }
+  ],
+  "confidence": 0.92,
+  "provenance": {
+    "source_type": "email",
+    "source_id": "msg-20241009-001",
+    "extracted_at": "2024-10-15T02:00:00Z",
+    "extractor": "email-import-v1"
+  },
+  "updated_at": "2024-10-15T23:58:00Z",
+  "notes": "Warmest Series A lead as of Oct 2024. Responded positively to Q3 metrics on Oct 15 — replied same night. Partner Sam Reiter will join Thursday deep-dive. Meridian typically moves fast once they see strong metrics. Priority: confirm the Thursday 3 PM slot today.\n\nContext: Jason initially asked for updated cap table and Q3 revenue metrics on Oct 9. Maya replied Oct 15 with the docs. Jason's reply the same night is a strong signal.\n\nRelated opportunity: opportunity-meridian-series-a"
+}

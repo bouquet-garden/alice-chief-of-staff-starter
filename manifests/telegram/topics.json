@@ -1,0 +1,70 @@
+{
+  "topics": [
+    {
+      "name": "Daily Briefings",
+      "icon": "📋",
+      "description": "Structured daily and weekly operating summaries delivered by Alice",
+      "routing_rules": [
+        "Morning brief (sent 7–8am on weekdays)",
+        "End-of-day summary (sent 5–6pm)",
+        "Weekly review digest (sent Monday morning)",
+        "Meeting prep briefs (sent 30 min before calendar events)"
+      ]
+    },
+    {
+      "name": "Urgent Escalations",
+      "icon": "🚨",
+      "description": "High-priority alerts requiring immediate attention — P0/P1 only",
+      "routing_rules": [
+        "P0 alerts: production incidents, blocking outages",
+        "P1 alerts: same-day deadline breaches, legal/financial risk",
+        "Incident response updates and resolution notices",
+        "Commitments overdue by more than 24 hours with external parties"
+      ]
+    },
+    {
+      "name": "Operations",
+      "icon": "⚙️",
+      "description": "Day-to-day task and workflow coordination updates",
+      "routing_rules": [
+        "Task status changes (assigned, blocked, completed)",
+        "Blocker alerts when tasks are stuck for more than 4 hours",
+        "Ownership handoffs and delegation confirmations",
+        "Recurring workflow check-ins and pulse updates"
+      ]
+    },
+    {
+      "name": "Decisions",
+      "icon": "🎯",
+      "description": "Decision records extracted from meetings and threads, plus pending decisions queue",
+      "routing_rules": [
+        "Decisions extracted from meeting transcripts",
+        "Decisions inferred from resolved Slack threads",
+        "Pending decisions awaiting owner sign-off",
+        "Decision context and supporting rationale summaries"
+      ]
+    },
+    {
+      "name": "Research",
+      "icon": "🔍",
+      "description": "On-demand lookups, background research, and prep briefs",
+      "routing_rules": [
+        "Entity lookups (people, companies, competitors)",
+        "Background research briefs triggered by /alice-brief",
+        "Pre-meeting context cards (attendee backgrounds, company overview)",
+        "Competitive intelligence summaries and market context"
+      ]
+    },
+    {
+      "name": "Builds",
+      "icon": "🔨",
+      "description": "Engineering delivery pipeline — PR status, deploys, and QA",
+      "routing_rules": [
+        "PR opened, review requested, or merged events",
+        "Deployment success and failure notifications",
+        "QA handoff notifications and test result summaries",
+        "Build failures and CI/CD pipeline alerts"
+      ]
+    }
+  ]
+}
